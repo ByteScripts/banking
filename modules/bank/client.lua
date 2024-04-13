@@ -160,6 +160,14 @@ bank.actions = {
         if not success then return Config.notify(response, 'error') end
 
         Config.notify(locale('pin.changed'), 'success')
+    end,
+    closeAccount = function(item)
+        Client.alertDialog(locale('title'), locale('close.description'), function()
+            local success, err = lib.callback.await('bank:closeAccount', false, item)
+            if not success then return Config.notify(err, 'error') end
+
+            return Config.notify(locale('close.success'), 'success')
+        end)
     end
 }
 

@@ -20,4 +20,9 @@ lib.callback.register('bank:deposit', function(src, item, amount)
     return bank.deposit(xPlayer, item, amount)
 end)
 
+lib.callback.register('bank:closeAccount', function(src, item)
+    local xPlayer = ESX.GetPlayerFromId(src)
+    return bank.closeAccount(xPlayer, item)
+end)
+
 exports('AddTransaction', bank.addTransaction)

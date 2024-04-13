@@ -94,4 +94,13 @@ bank.addTransaction = function(xPlayer, item, amount, type)
     return true
 end
 
+bank.closeAccount = function(xPlayer, item)
+    if not item then return false, locale('general.errors.invalid_params') end
+
+    local success, response = exports.ox_inventory:RemoveItem(xPlayer.source, item.name, 1, item.metadata, item.slot)
+    if not success then return false, response end
+
+    return true
+end
+
 return bank

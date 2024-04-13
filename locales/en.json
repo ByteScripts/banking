@@ -72,5 +72,9 @@
     "title": "Deposit",
     "description": "How much money would you like to deposit?",
     "success": "You have successfully deposited %s$ into your account"
+  },
+  "close": {
+    "description": "Are you sure you want to close your account?",
+    "success": "You have successfully closed your account."
   }
 }

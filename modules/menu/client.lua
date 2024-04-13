@@ -30,8 +30,8 @@ menu.creditCard = {
             },
             {
                 icon = 'fas fa-credit-card',
-                title = locale('iban.title'),
-                description = locale('iban.description', item.metadata.iban),
+                title = locale('menu.iban.title'),
+                description = locale('menu.iban.description', item.metadata.iban),
                 onSelect = function()
                     lib.setClipboard(item.metadata.iban)
                     reopen({
@@ -58,14 +58,14 @@ menu.creditCard = {
             },
             {
                 icon = 'fas fa-exchange-alt',
-                title = locale('transfer.title'),
-                description = locale('transfer.description'),
+                title = locale('menu.transfer.title'),
+                description = locale('menu.transfer.description'),
                 disabled = true
             },
             {
                 icon = 'fas fa-history',
-                title = locale('transactions.title'),
-                description = locale('transactions.description'),
+                title = locale('menu.transactions.title'),
+                description = locale('menu.transactions.description'),
                 onSelect = function()
                     if #item.metadata.transactions == 0 then
                         return reopen({
@@ -79,17 +79,19 @@ menu.creditCard = {
             },
             {
                 icon = 'fas fa-key',
-                title = locale('change_pin.title'),
-                description = locale('change_pin.description'),
+                title = locale('menu.change_pin.title'),
+                description = locale('menu.change_pin.description'),
                 onSelect = function()
                     return bank.actions.changePin(item)
                 end
             },
             {
                 icon = 'fas fa-trash',
-                title = locale('close_account.title'),
-                description = locale('close_account.description'),
-                disabled = true
+                title = locale('menu.close_account.title'),
+                description = locale('menu.close_account.description'),
+                onSelect = function()
+                    return bank.actions.closeAccount(item)
+                end
             },
         }
 
