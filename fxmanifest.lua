@@ -6,6 +6,8 @@ lua54 'yes'
 dependencies {
     'oxmysql',
     'ox_lib',
+    'ox_inventory',
+    'ox_target',
     'es_extended'
 }
 
@@ -28,5 +30,6 @@ files {
     'utils/client/**/*',
     'utils/shared/**/*',
     'utils/server/**/*',
+    'locales/*.json',
     'data/*.*',
 }

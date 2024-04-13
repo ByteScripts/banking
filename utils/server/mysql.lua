@@ -161,6 +161,6 @@ end
 Database = {}
 setmetatable(Database, databaseMeta)
 
-shared.onResourceStart(function()
+Shared.onResourceStart(function()
     createTables()
 end)

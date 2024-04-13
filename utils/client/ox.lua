@@ -1,7 +1,7 @@
 --- @param header string
 --- @param content string
 --- @param callback function
-function client.alertDialog(header, content, callback)
+function Client.alertDialog(header, content, callback)
     local alertAnswer = lib.alertDialog({
         header = header,
         content = content,
@@ -13,9 +13,9 @@ end
 
 --- @param title string
 --- @param description string
---- @param check fun(value: string): boolean
---- @return boolean, string
-function client.promptDialog(title, description, check)
+--- @param check fun(value: string): boolean, any?
+--- @return boolean, any?
+function Client.promptDialog(title, description, check)
     local input = lib.inputDialog(title, {
         { type = 'input' , label = description, description = 'Please fill in the input', required = true},
     })
@@ -28,7 +28,7 @@ function client.promptDialog(title, description, check)
 end
 
 --- @return number?
-function client.amountInput()
+function Client.amountInput()
     local input = lib.inputDialog('Amount', {
         { type = 'input' , label = 'Amount', description = 'Enter your amount', required = true},
     })
@@ -41,7 +41,7 @@ end
 --- @param description string
 --- @param default string
 --- @return any
-function client.textInput(title, label, description, default)
+function Client.textInput(title, label, description, default)
     local input = lib.inputDialog(title, {
         { type = 'input' , label = label, description = description, default = default, required = true},
     })
@@ -52,7 +52,7 @@ end
 --- @param title string
 --- @param message string
 --- @param type NotificationType
-function client.notify(title, message, type)
+function Client.notify(title, message, type)
     --- @type NotifyProps
     local data = {
         title = title,
@@ -64,7 +64,7 @@ function client.notify(title, message, type)
 end
 
 --- @param points CPoint[]
-function client.removePoints(points)
+function Client.removePoints(points)
     for _, value in pairs(points) do
         value:remove()
     end

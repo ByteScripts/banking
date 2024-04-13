@@ -1,0 +1,76 @@
+{
+  "title": "Bank",
+  "credit_card": "Credit Card",
+  "open": "Open Bank",
+  "balance": "Balance",
+  "holder": "Holder",
+  "expires": "Expires",
+  "general": {
+    "errors": {
+      "not_entered_amount": "You did not enter an amount",
+      "invalid_amount": "The amount you entered is invalid",
+      "already_have_account": "You already have an account",
+      "invalid_params": "The parameters you entered are invalid"
+    }
+  },
+  "menu": {
+    "iban": {
+      "title": "IBAN",
+      "description": "%s\nClick to copy your IBAN to the clipboard",
+      "copied": "Your IBAN has been copied to the clipboard"
+    },
+    "withdraw": {
+      "title": "Withdraw",
+      "description": "Withdraw money from your account"
+    },
+    "deposit": {
+      "title": "Deposit",
+      "description": "Deposit money into your account"
+    },
+    "transfer": {
+      "title": "Transfer",
+      "description": "Transfer money to another account"
+    },
+    "transactions": {
+      "title": "Transactions",
+      "description": "View your account transactions",
+      "error": "You do not have any transactions yet"
+    },
+    "change_pin": {
+      "title": "Change Pin",
+      "description": "Change your account pin"
+    },
+    "close_account": {
+      "title": "Close Account",
+      "description": "Close your bank account"
+    }
+  },
+  "create": {
+    "description": "You do not have a credit card. Would you like to open an account?",
+    "success": "You have successfully opened a bank account. You can now use the bank"
+  },
+  "pin": {
+    "set": "Please set a pin for your account",
+    "enter": "Please enter your pin",
+    "errors": {
+      "not_entered": "You did not enter a pin",
+      "invalid": "The pin must be 4 digits",
+      "incorrect": "The pin you entered is incorrect"
+    },
+    "success": "Your pin has been set",
+    "changed": "Your pin has been changed"
+  },
+  "withdraw": {
+    "title": "Withdraw",
+    "description": "How much money would you like to withdraw?",
+    "errors": {
+      "insufficient_funds": "You do not have enough funds to withdraw that amount"
+    },
+    "succcess": "You have successfully withdrawn %s$ from your account"
+  },
+  "deposit": {
+    "title": "Deposit",
+    "description": "How much money would you like to deposit?",
+    "success": "You have successfully deposited %s$ into your account"
+  }
+}

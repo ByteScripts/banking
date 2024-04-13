@@ -1,4 +1,4 @@
-shared = {
+Shared = {
     table = {
         ---Find a value in a table
         ---@param tbl table
@@ -60,7 +60,7 @@ shared = {
         ---@param array table
         ---@return table
         serializeArray = function(array)
-            return shared.table.map(array, function(value)
+            return Shared.table.map(array, function(value)
                 local new = {}
                 for k, v in pairs(value) do
                     if type(v) ~= 'function' then
@@ -138,7 +138,7 @@ shared = {
     }
 }
 
-shared.onResourceStart = setmetatable({}, {
+Shared.onResourceStart = setmetatable({}, {
     __call = function(self, cb)
         AddEventHandler('onResourceStart', function(resourceName)
             if resourceName == GetCurrentResourceName() then
@@ -149,7 +149,7 @@ shared.onResourceStart = setmetatable({}, {
     end
 })
 
-shared.onResourceStop = setmetatable({}, {
+Shared.onResourceStop = setmetatable({}, {
     __call = function(self, cb)
         AddEventHandler('onResourceStop', function(resourceName)
             if resourceName == GetCurrentResourceName() then

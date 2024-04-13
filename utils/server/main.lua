@@ -1,10 +1,10 @@
 --- @param src number
 --- @param data NotifyProps
-function server.notify(src, data)
+function Server.notify(src, data)
     TriggerClientEvent('ox_lib:notify', src, data)
 end
 
-function server.createDatabase(name, columns)
+function Server.createDatabase(name, columns)
     local query = 'CREATE TABLE IF NOT EXISTS ' .. name .. ' ('
     for _, value in pairs(columns) do
         query = query .. value.name .. ' ' .. value.type .. ', '
@@ -18,7 +18,7 @@ function server.createDatabase(name, columns)
     end)
 end
 
-server.date = {
+Server.date = {
     --- Add time to a date
     --- @param date any
     --- @param years? number
@@ -43,7 +43,7 @@ server.date = {
     --- @param seconds number
     --- @return string
     generateExpiresString = function(seconds)
-        local date = server.date.add(os.date('*t'), 0, 0, 0, 0, 0, seconds)
+        local date = Server.date.add(os.date('*t'), 0, 0, 0, 0, 0, seconds)
         return ('%02d.%02d.%04d %02d:%02d:%02d'):format(date.day, date.month, date.year, date.hour, date.min, date.sec)
     end
 }

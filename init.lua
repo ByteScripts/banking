@@ -1,19 +1,20 @@
 require 'utils.shared.main'
 
+Config = require 'data.Config'
 _print = print
-config = require 'data.config'
-debugMode = config.debug
+debugMode = Config.debug
+lib.locale()
 
 function print(...)
     if debugMode.enabled then
         local env = lib.context
-        local currentTime = env == 'server' and os.date('%H:%M:%S') or lib.callback.await('getTime')
-        _print('^4[' .. currentTime .. '][' .. env:upper() .. ']^7 ' .. ...)
+        local currentTime = env == 'server' and os.date('%H:%M:%S') or lib.callback.await('getTime', false)
+        _print('^4[' .. currentTime .. '][' .. env:upper() .. ']^7 ', ...)
     end
 end
 
 if lib.context == 'server' then
-    server = {}
+    Server = {}
 
     lib.callback.register('getTime', function()
         return os.date('%H:%M:%S')
@@ -24,8 +25,7 @@ if lib.context == 'server' then
     return require 'server'
 end
 
-client = {}
-
+Client = {}
 require 'utils.client.other'
 require 'utils.client.ox'
 require 'client'

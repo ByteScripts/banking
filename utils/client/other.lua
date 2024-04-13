@@ -5,7 +5,7 @@
 --- @param scale number
 --- @param shortRange boolean
 --- @return number
-function client.createBlip(name, location, sprite, color, scale, shortRange)
+function Client.createBlip(name, location, sprite, color, scale, shortRange)
     local blip = AddBlipForCoord(location.x, location.y, location.z)
 
     SetBlipSprite(blip, sprite or 1)
@@ -21,7 +21,7 @@ function client.createBlip(name, location, sprite, color, scale, shortRange)
 end
 
 --- @param blips number[]
-function client.removeBlips(blips)
+function Client.removeBlips(blips)
     for _, value in pairs(blips) do
         RemoveBlip(value)
     end
@@ -29,29 +29,34 @@ end
 
 --- @param model any
 --- @param location vector4
---- @return number
-function client.createPed(model, location)
-    model = GetHashKey(model)
-    lib.requestModel(model)
+--- @param animation { scenario: string }|{ dict: string, anim: string, flag: number }|nil
+--- @return number?
+function Client.createPed(model, location, animation)
+    model = lib.requestModel(model)
+    if not model then return end
 
-    local ped = CreatePed(4, model, location.x, location.y, location.z - 1.0, location.w, false, true)
+    local entity = CreatePed(0, model, location.x, location.y, location.z, location.w, false, true)
+    if animation and animation.scenario then
+        TaskStartScenarioInPlace(entity, animation.scenario, 0, true)
+    elseif animation and animation.dict then
+        lib.requestAnimDict(animation.dict)
+        TaskPlayAnim(entity, animation.dict, animation.anim, 8.0, 0.0, -1, animation.flag, 0, false, false, false)
+    end
 
-    SetEntityAsMissionEntity(ped, true, true)
-    SetBlockingOfNonTemporaryEvents(ped, true)
-    SetPedCanRagdoll(ped, false)
-    SetPedCanRagdollFromPlayerImpact(ped, false)
-    SetEntityInvincible(ped, true)
-    FreezeEntityPosition(ped, true)
+    SetModelAsNoLongerNeeded(model)
+    FreezeEntityPosition(entity, true)
+    SetEntityInvincible(entity, true)
+    SetBlockingOfNonTemporaryEvents(entity, true)
 
-    return ped
+    return entity
 end
 
 --- @param model any
 --- @param location vector4
---- @return number
-function client.createObject(model, location)
-    model = GetHashKey(model)
-    lib.requestModel(model)
+--- @return number?
+function Client.createObject(model, location)
+    model = lib.requestModel(model)
+    if not model then return end
 
     local object = CreateObject(model, location.x, location.y, location.z, true, true, true)
 
@@ -64,7 +69,7 @@ function client.createObject(model, location)
 end
 
 --- @param peds number[]
-function client.removePeds(peds)
+function Client.removePeds(peds)
     for _, value in pairs(peds) do
         DeleteEntity(value)
         exports.ox_target:removeLocalEntity(value)
@@ -72,7 +77,7 @@ function client.removePeds(peds)
 end
 
 --- @param objects number[]
-function client.removeObjects(objects)
+function Client.removeObjects(objects)
     for _, value in pairs(objects) do
         DeleteEntity(value)
         DeleteObject(value)
@@ -83,7 +88,7 @@ end
 --- @param location vector3
 --- @param size vector3
 --- @param color ColorTable
-function client.drawMarker(location, size, color)
+function Client.drawMarker(location, size, color)
     ---@diagnostic disable-next-line: param-type-mismatch
     DrawMarker(1, location.x, location.y, location.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, size.x, size.y, size.z, color.r, color.g, color.b, color.a, false, false, 2, false, false, false, false)
 end
