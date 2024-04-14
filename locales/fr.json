@@ -1,0 +1,102 @@
+{
+  "title": "Banque",
+  "credit_card": "Carte de crédit",
+  "open": "Ouvrir la banque",
+  "press_to_open": "Appuyez sur E pour ouvrir",
+  "open_atm": "Ouvrir le distributeur automatique",
+  "balance": "Solde",
+  "holder": "Titulaire",
+  "expires": "Expire",
+  "general": {
+    "errors": {
+      "not_entered_amount": "Vous n'avez pas saisi de montant",
+      "invalid_amount": "Le montant que vous avez saisi est invalide",
+      "already_have_account": "Vous avez déjà un compte",
+      "invalid_params": "Les paramètres que vous avez saisis sont invalides"
+    }
+  },
+  "menu": {
+    "iban": {
+      "title": "IBAN",
+      "description": "%s\nCliquez pour copier votre IBAN dans le presse-papiers",
+      "copied": "Votre IBAN a été copié dans le presse-papiers"
+    },
+    "withdraw": {
+      "title": "Retrait",
+      "description": "Retirer de l'argent de votre compte"
+    },
+    "deposit": {
+      "title": "Dépôt",
+      "description": "Déposer de l'argent sur votre compte"
+    },
+    "transfer": {
+      "title": "Virement",
+      "description": "Transférer de l'argent vers un autre compte"
+    },
+    "transactions": {
+      "title": "Transactions",
+      "description": "Voir les transactions de votre compte",
+      "error": "Vous n'avez pas encore de transactions"
+    },
+    "change_pin": {
+      "title": "Changer le code PIN",
+      "description": "Changer le code PIN de votre compte"
+    },
+    "close_account": {
+      "title": "Fermer le compte",
+      "description": "Fermer votre compte bancaire"
+    }
+  },
+  "create": {
+    "description": "Vous n'avez pas de carte de crédit. Souhaitez-vous ouvrir un compte?",
+    "success": "Vous avez ouvert un compte bancaire avec succès. Vous pouvez maintenant utiliser la banque"
+  },
+  "pin": {
+    "set": "Veuillez définir un code PIN pour votre compte",
+    "enter": "Veuillez saisir votre code PIN",
+    "errors": {
+      "not_entered": "Vous n'avez pas saisi de code PIN",
+      "invalid": "Le code PIN doit comporter 4 chiffres",
+      "incorrect": "Le code PIN que vous avez saisi est incorrect"
+    },
+    "success": "Votre code PIN a été défini",
+    "changed": "Votre code PIN a été changé"
+  },
+  "withdraw": {
+    "title": "Retrait",
+    "description": "Combien d'argent souhaitez-vous retirer?",
+    "errors": {
+      "insufficient_funds": "Vous n'avez pas suffisamment de fonds pour retirer ce montant"
+    },
+    "success": "Vous avez retiré avec succès %s$ de votre compte"
+  },
+  "deposit": {
+    "title": "Dépôt",
+    "description": "Combien d'argent souhaitez-vous déposer?",
+    "success": "Vous avez déposé avec succès %s$ sur votre compte"
+  },
+  "close": {
+    "description": "Êtes-vous sûr de vouloir fermer votre compte?",
+    "success": "Vous avez fermé votre compte avec succès.",
+    "errors": {
+      "not_owner": "Vous n'êtes pas le propriétaire de ce compte"
+    }
+  },
+  "transfer": {
+    "iban_placeholder": "Entrez l'IBAN du compte vers lequel vous souhaitez effectuer le transfert",
+    "amount_placeholder": "Entrez le montant que vous souhaitez transférer",
+    "errors": {
+      "invalid_fields": "Les champs que vous avez saisis sont invalides",
+      "invalid_iban": "L'IBAN que vous avez saisi est invalide"
+    },
+    "success": "Vous avez transféré avec succès %s$ sur le compte avec l'IBAN %s",
+    "target_message": "Vous avez reçu un transfert de %s$ de la part de %s"
+  },
+  "command": {
+    "not_online": "Le joueur n'est pas en ligne",
+    "give_credit_card": "Vous avez donné une carte de crédit à %s",
+    "invalid_iban": "L'IBAN que vous avez saisi est invalide",
+    "set_money": "Vous avez défini le solde de %s à %s$",
+    "set_money_target": "Votre solde a été défini à %s$ par %s"
+  }
+}
