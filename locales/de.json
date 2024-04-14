@@ -1,0 +1,102 @@
+{
+  "title": "Bank",
+  "credit_card": "Kreditkarte",
+  "open": "Bank öffnen",
+  "press_to_open": "Drücken Sie E, um zu öffnen",
+  "open_atm": "Geldautomat öffnen",
+  "balance": "Kontostand",
+  "holder": "Inhaber",
+  "expires": "Verfällt",
+  "general": {
+    "errors": {
+      "not_entered_amount": "Sie haben keinen Betrag eingegeben",
+      "invalid_amount": "Der eingegebene Betrag ist ungültig",
+      "already_have_account": "Sie haben bereits ein Konto",
+      "invalid_params": "Die von Ihnen eingegebenen Parameter sind ungültig"
+    }
+  },
+  "menu": {
+    "iban": {
+      "title": "IBAN",
+      "description": "%s\nKlicken Sie hier, um Ihre IBAN in die Zwischenablage zu kopieren",
+      "copied": "Ihre IBAN wurde in die Zwischenablage kopiert"
+    },
+    "withdraw": {
+      "title": "Abheben",
+      "description": "Geld von Ihrem Konto abheben"
+    },
+    "deposit": {
+      "title": "Einzahlung",
+      "description": "Geld auf Ihr Konto einzahlen"
+    },
+    "transfer": {
+      "title": "Überweisung",
+      "description": "Geld auf ein anderes Konto überweisen"
+    },
+    "transactions": {
+      "title": "Transaktionen",
+      "description": "Ihre Kontotransaktionen anzeigen",
+      "error": "Sie haben noch keine Transaktionen"
+    },
+    "change_pin": {
+      "title": "PIN ändern",
+      "description": "Ihre Kontopin ändern"
+    },
+    "close_account": {
+      "title": "Konto schließen",
+      "description": "Ihr Bankkonto schließen"
+    }
+  },
+  "create": {
+    "description": "Sie haben keine Kreditkarte. Möchten Sie ein Konto eröffnen?",
+    "success": "Sie haben erfolgreich ein Bankkonto eröffnet. Sie können die Bank jetzt nutzen"
+  },
+  "pin": {
+    "set": "Bitte legen Sie eine PIN für Ihr Konto fest",
+    "enter": "Bitte geben Sie Ihre PIN ein",
+    "errors": {
+      "not_entered": "Sie haben keine PIN eingegeben",
+      "invalid": "Die PIN muss 4 Ziffern lang sein",
+      "incorrect": "Die eingegebene PIN ist falsch"
+    },
+    "success": "Ihre PIN wurde festgelegt",
+    "changed": "Ihre PIN wurde geändert"
+  },
+  "withdraw": {
+    "title": "Abheben",
+    "description": "Wie viel Geld möchten Sie abheben?",
+    "errors": {
+      "insufficient_funds": "Sie haben nicht genügend Guthaben, um diesen Betrag abzuheben"
+    },
+    "success": "Sie haben erfolgreich %s$ von Ihrem Konto abgehoben"
+  },
+  "deposit": {
+    "title": "Einzahlung",
+    "description": "Wie viel Geld möchten Sie einzahlen?",
+    "success": "Sie haben erfolgreich %s$ auf Ihr Konto eingezahlt"
+  },
+  "close": {
+    "description": "Sind Sie sicher, dass Sie Ihr Konto schließen möchten?",
+    "success": "Sie haben Ihr Konto erfolgreich geschlossen.",
+    "errors": {
+      "not_owner": "Sie sind nicht der Eigentümer dieses Kontos"
+    }
+  },
+  "transfer": {
+    "iban_placeholder": "Geben Sie die IBAN des Kontos ein, auf das Sie überweisen möchten",
+    "amount_placeholder": "Geben Sie den Betrag ein, den Sie überweisen möchten",
+    "errors": {
+      "invalid_fields": "Die von Ihnen eingegebenen Felder sind ungültig",
+      "invalid_iban": "Die eingegebene IBAN ist ungültig"
+    },
+    "success": "Sie haben erfolgreich %s$ auf das Konto mit der IBAN %s überwiesen",
+    "target_message": "Sie haben eine Überweisung von %s$ von %s erhalten"
+  },
+  "command": {
+    "not_online": "Der Spieler ist nicht online",
+    "give_credit_card": "Sie haben %s eine Kreditkarte gegeben",
+    "invalid_iban": "Die eingegebene IBAN ist ungültig",
+    "set_money": "Sie haben den Kontostand von %s auf %s$ gesetzt",
+    "set_money_target": "Ihr Kontostand wurde von %s auf %s$ gesetzt"
+  }
+}
