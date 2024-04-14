@@ -9,6 +9,7 @@
   "expires": "Expires",
   "general": {
     "errors": {
+      "insufficient_funds": "You do not have enough funds to perform this action",
       "not_entered_amount": "You did not enter an amount",
       "invalid_amount": "The amount you entered is invalid",
       "already_have_account": "You already have an account",

@@ -17,7 +17,7 @@ end
 --- @return boolean, any?
 function Client.promptDialog(title, description, check)
     local input = lib.inputDialog(title, {
-        { type = 'input' , label = description, description = 'Please fill in the input', required = true},
+        { type = 'input' , label = description, required = true},
     })
     if not input then return false, 'Please enter something in' end
 

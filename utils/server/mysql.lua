@@ -176,6 +176,7 @@ setmetatable(Database, databaseMeta)
 
 Shared.onResourceStart(function()
     createTables()
+    Wait(500)
 
     local results = Database.credit_cards.getAll()
     local data = {}

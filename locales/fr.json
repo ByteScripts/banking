@@ -9,6 +9,7 @@
   "expires": "Expire",
   "general": {
     "errors": {
+      "insufficient_funds": "Vous n'avez pas suffisamment de fonds pour effectuer cette opération",
       "not_entered_amount": "Vous n'avez pas saisi de montant",
       "invalid_amount": "Le montant que vous avez saisi est invalide",
       "already_have_account": "Vous avez déjà un compte",

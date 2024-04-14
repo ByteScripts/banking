@@ -108,6 +108,8 @@ bank.addTransaction = function(xPlayer, item, amount, transactionType)
     end
 
     local newMetadata = item.metadata
+    if not newMetadata.transactions then newMetadata.transactions = {} end
+
     newMetadata.transactions = type(newMetadata.transactions) == 'table' and newMetadata.transactions or json.decode(newMetadata.transactions)
 
     table.insert(newMetadata.transactions, {

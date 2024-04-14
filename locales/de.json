@@ -9,6 +9,7 @@
   "expires": "Verfällt",
   "general": {
     "errors": {
+      "insufficient_funds": "Sie haben nicht genügend Guthaben, um diese Aktion auszuführen",
       "not_entered_amount": "Sie haben keinen Betrag eingegeben",
       "invalid_amount": "Der eingegebene Betrag ist ungültig",
       "already_have_account": "Sie haben bereits ein Konto",

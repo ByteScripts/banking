@@ -36,6 +36,12 @@ return {
     end,
     atmOptions = {
         ['balance'] = true,
-        ['withdraw'] = true
+        -- ['iban'] = true,
+        ['withdraw'] = true,
+        -- ['deposit'] = true,
+        -- ['transfer'] = true,
+        -- ['transactions'] = true,
+        -- ['change_pin'] = true,
+        -- ['close_account'] = true,
     }
 }
