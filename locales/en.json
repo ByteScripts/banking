@@ -2,6 +2,8 @@
   "title": "Bank",
   "credit_card": "Credit Card",
   "open": "Open Bank",
+  "press_to_open": "Press E to open",
+  "open_atm": "Open ATM",
   "balance": "Balance",
   "holder": "Holder",
   "expires": "Expires",
@@ -66,7 +68,7 @@
     "errors": {
       "insufficient_funds": "You do not have enough funds to withdraw that amount"
     },
-    "succcess": "You have successfully withdrawn %s$ from your account"
+    "success": "You have successfully withdrawn %s$ from your account"
   },
   "deposit": {
     "title": "Deposit",
@@ -75,6 +77,26 @@
   },
   "close": {
     "description": "Are you sure you want to close your account?",
-    "success": "You have successfully closed your account."
+    "success": "You have successfully closed your account.",
+    "errors": {
+      "not_owner": "You are not the owner of this account"
+    }
+  },
+  "transfer": {
+    "iban_placeholder": "Enter the IBAN of the account you want to transfer to",
+    "amount_placeholder": "Enter the amount you want to transfer",
+    "errors": {
+      "invalid_fields": "The fields you entered are invalid",
+      "invalid_iban": "The IBAN you entered is invalid"
+    },
+    "success": "You successfully transfered %s$ to the account with the IBAN %s",
+    "target_message": "You have received a transfer of %s$ from %s"
+  },
+  "command": {
+    "not_online": "The player is not online",
+    "give_credit_card": "You have given a credit card to %s",
+    "invalid_iban": "The IBAN you entered is invalid",
+    "set_money": "You have set the balance of %s to %s$",
+    "set_money_target": "Your balance has been set to %s$ by %s"
   }
 }

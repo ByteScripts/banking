@@ -14,6 +14,7 @@ menu.noCreditCard = {
 menu.creditCard = {
     open = function(bank, item, isAtm)
         isAtm = isAtm or false
+
         local function reopen(object)
             if object then
                 Config.notify(object[1], object[2])
@@ -24,11 +25,13 @@ menu.creditCard = {
 
         local options = {
             {
+                name = 'balance',
                 icon = 'fas fa-dollar-sign',
                 title = locale('balance'),
                 description = string.format('$%s', item.metadata.balance),
             },
             {
+                name = 'iban',
                 icon = 'fas fa-credit-card',
                 title = locale('menu.iban.title'),
                 description = locale('menu.iban.description', item.metadata.iban),
@@ -41,6 +44,7 @@ menu.creditCard = {
                 end
             },
             {
+                name = 'withdraw',
                 icon = 'fas fa-money-bill-wave',
                 title = locale('withdraw.title'),
                 description = locale('withdraw.description'),
@@ -49,6 +53,7 @@ menu.creditCard = {
                 end
             },
             {
+                name = 'deposit',
                 icon = 'fas fa-money-bill-wave',
                 title = locale('deposit.title'),
                 description = locale('deposit.description'),
@@ -57,12 +62,16 @@ menu.creditCard = {
                 end
             },
             {
+                name = 'transfer',
                 icon = 'fas fa-exchange-alt',
                 title = locale('menu.transfer.title'),
                 description = locale('menu.transfer.description'),
-                disabled = true
+                onSelect = function()
+                    bank.actions.transfer(item)
+                end
             },
             {
+                name = 'transactions',
                 icon = 'fas fa-history',
                 title = locale('menu.transactions.title'),
                 description = locale('menu.transactions.description'),
@@ -78,6 +87,7 @@ menu.creditCard = {
                 end
             },
             {
+                name = 'change_pin',
                 icon = 'fas fa-key',
                 title = locale('menu.change_pin.title'),
                 description = locale('menu.change_pin.description'),
@@ -86,6 +96,7 @@ menu.creditCard = {
                 end
             },
             {
+                name = 'close_account',
                 icon = 'fas fa-trash',
                 title = locale('menu.close_account.title'),
                 description = locale('menu.close_account.description'),
@@ -99,7 +110,9 @@ menu.creditCard = {
             id = 'bank:creditcard',
             menu = 'bank:main',
             title = string.format('%s (%s)', locale('credit_card'), item.metadata.name),
-            options = options,
+            options = not isAtm and options or Shared.table.filter(options, function(option)
+                return Config.atmOptions[option.name]
+            end)
         })
 
         lib.showContext('bank:creditcard')

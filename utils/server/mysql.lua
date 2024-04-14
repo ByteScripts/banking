@@ -1,4 +1,17 @@
-local db = {}
+local db = {
+    ['credit_cards'] = {
+        id = 'INT AUTO_INCREMENT PRIMARY KEY',
+        identifier = 'VARCHAR(255)',
+        name = 'VARCHAR(255)',
+        iban = 'VARCHAR(255) UNIQUE',
+        number = 'VARCHAR(255)',
+        cvv = 'VARCHAR(255)',
+        expires = 'LONGTEXT',
+        balance = 'INT DEFAULT 0',
+        pin = 'INT DEFAULT NULL',
+        transactions = 'LONGTEXT DEFAULT "[]"',
+    }
+}
 local databaseMeta = {
     __index = function(tbl, key)
         local tableDef = db[key]
@@ -163,4 +176,16 @@ setmetatable(Database, databaseMeta)
 
 Shared.onResourceStart(function()
     createTables()
+
+    local results = Database.credit_cards.getAll()
+    local data = {}
+
+    for _, value in ipairs(results) do
+        value.transactions = json.decode(value.transactions)
+        value.expires = json.decode(value.expires)
+
+        data[value.iban] = value
+    end
+
+    Cache.update(data)
 end)

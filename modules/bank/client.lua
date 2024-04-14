@@ -1,14 +1,21 @@
 local bank = {}
 local menu = require 'modules.menu.client'
 
-bank.open = function()
+bank.open = function(isAtm)
     local hasCreditCard = exports.ox_inventory:GetItemCount(Config.item) > 0
     if not hasCreditCard then return menu.noCreditCard.open() end
 
     local creditCardItems = exports.ox_inventory:Search('slots', Config.item)
     if not creditCardItems or #creditCardItems <= 0 then return menu.noCreditCard.open() end
 
-    local data = Shared.table.map(creditCardItems, function(item)
+    local data = Shared.table.map(creditCardItems, function(value)
+        local data = Cache[value.metadata.iban]
+        if not data then return end
+
+        local item = {
+            metadata = data,
+            slot = value.slot
+        }
         return {
             icon = 'fas fa-credit-card',
             title = string.format('%s (%s)', locale('credit_card'), item.metadata.name),
@@ -19,7 +26,7 @@ bank.open = function()
                 local success = bank.pin.check(item)
                 if not success then return end
 
-                return menu.creditCard.open(bank, item)
+                return menu.creditCard.open(bank, item, isAtm)
             end
         }
     end)
@@ -140,7 +147,7 @@ bank.actions = {
         Config.notify(locale('deposit.success', response), 'success')
     end,
     changePin = function(item)
-        local promptSuccess, promptResponse = Client.promptDialog(locale('title'), locale('pin.change'), function(newPin)
+        local promptSuccess, promptResponse = Client.promptDialog(locale('title'), locale('menu.change_pin.title'), function(newPin)
             if not newPin then
                 Config.notify(locale('pin.errors.not_entered'), 'error')
                 return false
@@ -163,11 +170,41 @@ bank.actions = {
     end,
     closeAccount = function(item)
         Client.alertDialog(locale('title'), locale('close.description'), function()
+            local isOwner = item.metadata.identifier == ESX.PlayerData.identifier
+            if not isOwner then return Config.notify(locale('close.errors.not_owner'), 'error') end
+
             local success, err = lib.callback.await('bank:closeAccount', false, item)
             if not success then return Config.notify(err, 'error') end
 
             return Config.notify(locale('close.success'), 'success')
         end)
+    end,
+    transfer = function(item)
+        local response = lib.inputDialog(locale('title'), {
+            {
+                label = locale('menu.iban.title'),
+                description = locale('transfer.iban_placeholder'),
+                type = 'input',
+                required = true,
+            },
+            {
+                label = locale('menu.transfer.title'),
+                description = locale('transfer.amount_placeholder'),
+                type = 'number',
+                required = true,
+            }
+        })
+        if not response or not response[1] or not response[2] then return end
+
+        local iban, amount = response[1], tonumber(response[2])
+        if not iban or not amount or amount <= 0 then
+            return Config.notify(locale('transfer.errors.invalid_fields'), 'error')
+        end
+
+        local success, err = lib.callback.await('bank:transfer', false, item, iban, amount)
+        if not success then return Config.notify(err, 'error') end
+
+        Config.notify(locale('transfer.success', amount, iban), 'success')
     end
 }
 

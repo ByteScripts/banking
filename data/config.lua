@@ -2,6 +2,9 @@ return {
     debug = {
         enabled = true
     },
+    restricted = {
+        'group.admin'
+    },
     item = 'creditcard',
     notify = function(description, type, src)
         type = type or 'info'
@@ -18,5 +21,21 @@ return {
         end
 
         lib.notify(data)
-    end
+    end,
+    atmBlips = true,
+    textUi = {
+        show = function(text)
+            lib.showTextUI(text)
+        end,
+        hide = function()
+            lib.hideTextUI()
+        end
+    },
+    helpNotification = function(text)
+        ESX.ShowHelpNotification(text)
+    end,
+    atmOptions = {
+        ['balance'] = true,
+        ['withdraw'] = true
+    }
 }

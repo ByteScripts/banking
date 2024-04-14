@@ -1,4 +1,6 @@
 Shared = {
+    target = GetConvarInt('byte:ox_target', 0) == 1,
+    textUi = GetConvarInt('byte:ox_textui', 0) == 1,
     table = {
         ---Find a value in a table
         ---@param tbl table
