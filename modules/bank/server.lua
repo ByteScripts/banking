@@ -13,6 +13,7 @@ bank.openBankAccount = function(xPlayer, forceCreate)
         iban = string.format('DE%s',twentyTwoDigits)
     }
     local success, response = exports.ox_inventory:AddItem(xPlayer.source, Config.item, 1, metadata)
+    local isFirstCard = MySQL.scalar.await('SELECT COUNT(*) FROM credit_cards WHERE identifier = ?', { xPlayer.identifier }) == 0
     local data = {
         identifier = xPlayer.identifier,
         name = xPlayer.name,
@@ -24,6 +25,7 @@ bank.openBankAccount = function(xPlayer, forceCreate)
             string = string.format('%s/%s', expireDate.month, expireDate.year),
             date = expireDate
         }),
+        main = isFirstCard and 1 or 0
     }
 
     Database.credit_cards.create({
@@ -48,6 +50,60 @@ bank.setPin = function(item, pin)
     Cache.updateSingle(item.metadata.iban, item.metadata)
 
     return true
+end
+
+bank.setMainCard = function(xPlayer, item)
+    if not item then return false, locale('general.errors.invalid_params') end
+
+    local currentMain = Database.credit_cards.findFirst({
+        where = {
+            identifier = xPlayer.identifier,
+            main = 1
+        }
+    })
+    if currentMain then
+        Database.credit_cards.update({
+            data = {
+                main = 0
+            },
+            where = {
+                iban = currentMain.iban
+            }
+        })
+
+        Cache.data[currentMain.iban].main = false
+        Cache.updateSingle(currentMain.iban, Cache.data[currentMain.iban])
+    end
+
+    item.metadata.main = 1
+    Database.credit_cards.update({
+        data = {
+            main = 1
+        },
+        where = {
+            iban = item.metadata.iban
+        }
+    })
+    Cache.updateSingle(item.metadata.iban, item.metadata)
+
+    return true
+end
+
+bank.getMainCard = function(data)
+    local identifier = type(data) == 'number' and ESX.GetPlayerFromId(data).identifier or type(data) == 'string' and data or data.identifier
+    local found = Database.credit_cards.findFirst({
+        where = {
+            identifier = identifier,
+            main = 1
+        }
+    })
+
+    if found then
+        found.expires = json.decode(found.expires)
+        found.transactions = type(found.transactions) == 'table' and found.transactions or json.decode(found.transactions)
+    end
+
+    return found
 end
 
 bank.withdraw = function(xPlayer, item, amount)
@@ -193,6 +249,22 @@ bank.transfer = function(xPlayer, item, iban, amount)
     end
 
     return true
+end
+
+bank.resendCard = function(xPlayer, iban, holder)
+    local target = ESX.GetPlayerFromIdentifier(holder)
+    if not target then return false, locale('admin_menu.single.resend.title') end
+
+    local card = Cache.data[iban]
+    if not card then return false, locale('general.errors.invalid_params') end
+
+    local metadata = {
+        owner = xPlayer.identifier,
+        description = string.format('%s: %s   \n   %s: %s', locale('holder'), xPlayer.name, locale('expires'), card.expires.string),
+        iban = string.format('DE%s', iban)
+    }
+    local success, response = exports.ox_inventory:AddItem(xPlayer.source, Config.item, 1, metadata)
+    return success, response
 end
 
 return bank

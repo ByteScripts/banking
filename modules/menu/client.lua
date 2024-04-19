@@ -31,6 +31,16 @@ menu.creditCard = {
                 description = string.format('$%s', item.metadata.balance),
             },
             {
+                name = 'main_card',
+                icon = 'fas fa-star',
+                title = locale('menu.main_card.title'),
+                description = locale('menu.main_card.description'),
+                disabled = item.metadata.main,
+                onSelect = function()
+                    bank.actions.setMainCard(item)
+                end,
+            },
+            {
                 name = 'iban',
                 icon = 'fas fa-credit-card',
                 title = locale('menu.iban.title'),

@@ -18,7 +18,7 @@ bank.open = function(isAtm)
         }
         return {
             icon = 'fas fa-credit-card',
-            title = string.format('%s (%s)', locale('credit_card'), item.metadata.name),
+            title = string.format('%s (%s) %s', locale('credit_card'), item.metadata.name, item.metadata.main and '(' .. locale('main_card') .. ')' or ''),
             description = string.format('%s: $%s', locale('balance'), item.metadata.balance),
             onSelect = function()
                 if not item.metadata.pin then return bank.pin.create(item) end
@@ -98,6 +98,14 @@ bank.pin = {
 }
 
 bank.actions = {
+    setMainCard = function(item)
+        Client.alertDialog(locale('title'), locale('menu.main_card.modal'), function()
+            local success, err = lib.callback.await('bank:setMainCard', false, item)
+            if not success then return Config.notify(err, 'error') end
+
+            return Config.notify(locale('menu.main_card.success'), 'success')
+        end)
+    end,
     withdraw = function(item)
         local success, response = Client.promptDialog(locale('title'), locale('withdraw.description'), function(amount)
             if not amount then

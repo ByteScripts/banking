@@ -10,6 +10,7 @@ local db = {
         balance = 'INT DEFAULT 0',
         pin = 'INT DEFAULT NULL',
         transactions = 'LONGTEXT DEFAULT "[]"',
+        main = 'BOOLEAN DEFAULT FALSE',
     }
 }
 local databaseMeta = {
