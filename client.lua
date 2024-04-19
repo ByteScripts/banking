@@ -2,6 +2,8 @@ local bank = require 'modules.bank.client'
 local atms = lib.load('data.atms')
 local atmsJson = lib.loadJson('data.atms_locations')
 
+require 'modules.admin.client'
+
 local function registerPoint(coords)
     lib.points.new({
         coords = coords,

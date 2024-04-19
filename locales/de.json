@@ -7,6 +7,7 @@
   "balance": "Kontostand",
   "holder": "Inhaber",
   "expires": "Verfällt",
+  "main_card": "Hauptkarte",
   "general": {
     "errors": {
       "insufficient_funds": "Sie haben nicht genügend Guthaben, um diese Aktion auszuführen",
@@ -17,6 +18,12 @@
     }
   },
   "menu": {
+    "main_card": {
+      "title": "Als Hauptkarte festlegen",
+      "description": "Legen Sie diese Karte als Ihre Hauptkarte fest",
+      "modal": "Möchten Sie diese Karte als Ihre Hauptkarte festlegen? Sie können dies später ändern",
+      "success": "Sie haben diese Karte als Ihre Hauptkarte festgelegt"
+    },
     "iban": {
       "title": "IBAN",
       "description": "%s\nKlicken Sie hier, um Ihre IBAN in die Zwischenablage zu kopieren",
@@ -99,5 +106,25 @@
     "invalid_iban": "Die eingegebene IBAN ist ungültig",
     "set_money": "Sie haben den Kontostand von %s auf %s$ gesetzt",
     "set_money_target": "Ihr Kontostand wurde von %s auf %s$ gesetzt"
+  },
+  "single": {
+    "title": "Kreditkarte verwalten",
+    "balance": {
+      "title": "Saldo"
+    },
+    "resend": {
+      "title": "Erneut senden",
+      "description": "Die Kreditkarte erneut an den Spieler senden",
+      "are_you_sure": "Sind Sie sicher, dass Sie die Kreditkarte erneut an den Spieler senden möchten?",
+      "success": "Die Kreditkarte wurde erfolgreich erneut an den Spieler gesendet",
+      "error": "Der Spieler ist nicht online"
+    },
+    "iban": {
+      "title": "IBAN"
+    },
+    "holder": {
+      "title": "Inhaber"
+    },
+    "copied_to_clipboard": "Der Wert wurde in die Zwischenablage kopiert"
   }
 }

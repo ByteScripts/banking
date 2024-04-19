@@ -7,6 +7,7 @@
   "balance": "Solde",
   "holder": "Titulaire",
   "expires": "Expire",
+  "main_card": "Carte principale",
   "general": {
     "errors": {
       "insufficient_funds": "Vous n'avez pas suffisamment de fonds pour effectuer cette opération",
@@ -17,6 +18,12 @@
     }
   },
   "menu": {
+    "main_card": {
+      "title": "Carte principale",
+      "description": "Gérer votre carte principale",
+      "modal": "Voulez-vous définir cette carte comme votre carte principale?",
+      "success": "Vous avez défini cette carte comme votre carte principale"
+    },
     "iban": {
       "title": "IBAN",
       "description": "%s\nCliquez pour copier votre IBAN dans le presse-papiers",
@@ -99,5 +106,25 @@
     "invalid_iban": "L'IBAN que vous avez saisi est invalide",
     "set_money": "Vous avez défini le solde de %s à %s$",
     "set_money_target": "Votre solde a été défini à %s$ par %s"
+  },
+  "single": {
+    "title": "Gérer la carte de crédit",
+    "balance": {
+      "title": "Solde"
+    },
+    "resend": {
+      "title": "Renvoyer",
+      "description": "Renvoyer la carte de crédit au joueur",
+      "are_you_sure": "Êtes-vous sûr de vouloir renvoyer la carte de crédit au joueur ?",
+      "success": "La carte de crédit a été renvoyée avec succès au joueur",
+      "error": "Le joueur n'est pas en ligne"
+    },
+    "iban": {
+      "title": "IBAN"
+    },
+    "holder": {
+      "title": "Titulaire"
+    },
+    "copied_to_clipboard": "La valeur a été copiée dans le presse-papiers"
   }
 }

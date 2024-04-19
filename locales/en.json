@@ -7,6 +7,7 @@
   "balance": "Balance",
   "holder": "Holder",
   "expires": "Expires",
+  "main_card": "Main Card",
   "general": {
     "errors": {
       "insufficient_funds": "You do not have enough funds to perform this action",
@@ -17,6 +18,12 @@
     }
   },
   "menu": {
+    "main_card": {
+      "title": "Set as Main Card",
+      "description": "Set this card as your main card",
+      "modal": "Are you sure you want to set this card as your main card?",
+      "success": "You have set this card as your main card"
+    },
     "iban": {
       "title": "IBAN",
       "description": "%s\nClick to copy your IBAN to the clipboard",
@@ -99,5 +106,52 @@
     "invalid_iban": "The IBAN you entered is invalid",
     "set_money": "You have set the balance of %s to %s$",
     "set_money_target": "Your balance has been set to %s$ by %s"
+  },
+  "admin_menu": {
+    "title": "Admin Menu",
+    "give_credit_card": {
+      "title": "Give Credit Card",
+      "description": "Give a credit card to a player",
+      "player": {
+        "title": "Player ID",
+        "description": "Enter the player ID you want to give a credit card to"
+      },
+      "success": "You have given a credit card to the player with the ID %s"
+    },
+    "list": {
+      "title": "Credit Cards",
+      "description": "View all credit cards",
+      "search": {
+        "title": "Search",
+        "description": "Search by identifier/iban",
+        "identifier": "Identifier",
+        "iban": "IBAN",
+        "value": {
+          "title": "Value",
+          "description": "Enter the value you want to search for"
+        },
+        "not_found": "No credit cards found with the search value %s"
+      }
+    },
+    "single": {
+      "title": "Manage Credit Card",
+      "balance": {
+        "title": "Balance"
+      },
+      "resend": {
+        "title": "Resend",
+        "description": "Resend the credit card to the player",
+        "are_you_sure": "Are you sure you want to resend the credit card to the player?",
+        "success": "Successfully resent the credit card to the player",
+        "error": "The player is not online"
+      },
+      "iban": {
+        "title": "IBAN"
+      },
+      "holder": {
+        "title": "Holder"
+      },
+      "copied_to_clipboard": "The value has been copied to the clipboard"
+    }
   }
 }

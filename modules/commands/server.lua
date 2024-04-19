@@ -1,5 +1,14 @@
 local bank = require 'modules.bank.server'
 
+lib.addCommand('bank:menu', {
+    restricted = Config.restricted
+}, function(src)
+    local xPlayer = ESX.GetPlayerFromId(src)
+    if not xPlayer then return end
+
+    TriggerClientEvent('bank:openAdminMenu', src)
+end)
+
 lib.addCommand('bank:giveCreditCard', {
     params = {
         {
