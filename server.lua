@@ -55,8 +55,14 @@ RegisterNetEvent('esx:playerLoaded', function(src)
     TriggerClientEvent('bank:updateCache', src, Cache.data)
 end)
 
-exports('getBankObject', function()
-    return bank
-end)
+exports('openBankAccount', bank.openBankAccount)
+exports('setPin', bank.setPin)
+exports('setMainCard', bank.setMainCard)
+exports('withdraw', bank.withdraw)
+exports('deposit', bank.deposit)
+exports('closeAccount', bank.closeAccount)
+exports('transfer', bank.transfer)
+exports('resendCard', bank.resendCard)
+exports('getMainCard', bank.getMainCard)
 
 require 'modules.commands.server'
